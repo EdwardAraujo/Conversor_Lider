@@ -1,0 +1,37 @@
+﻿@model ConversorModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1> Conversor </h1>
+
+<form asp-controller="Conversor" asp-action="Index" enctype="multipart/form-data" method="post">
+    <div class="col-md-4">
+        <label>Selecione o Layout</label>
+        <select asp-for="IdLayoutConversor" class="form-control">
+            @{
+                foreach (var item in ViewBag.ListaLayoutConversor.Rows)
+                {
+                    <option value="@item[0]">@item[1]</option>
+                }
+            }
+        </select>
+
+    </div>
+
+    <br />
+
+    <div class="col-md-4">
+
+        <input asp-for="file" type="file" name="file" />
+
+    </div>
+
+    <br />
+
+    <div class="col-md-4">
+        <button type="submit" class="btn btn-success">Converter</button>
+    </div>
+
+</form>
